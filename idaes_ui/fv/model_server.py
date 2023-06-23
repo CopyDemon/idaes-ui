@@ -29,6 +29,7 @@ import threading
 from typing import Dict, Union
 from urllib.parse import urlparse
 import time
+import os
 
 # package
 from idaes_ui.fv.flowsheet import FlowsheetDiff, FlowsheetSerializer
@@ -70,6 +71,8 @@ class FlowsheetServer(http.server.HTTPServer):
         """Start the server, which will spawn a thread."""
         self._thr = threading.Thread(target=self._run, daemon=True)
         self._thr.start()
+        #create shared JSON file
+        create_shared_JSON(self.port, "sample_visualization")
 
     def add_setting(self, key: str, value):
         """Add a setting to the flowsheet's settings block. Settings block is
@@ -422,3 +425,26 @@ def find_free_port():
     s.close()
     time.sleep(1)  # wait for socket cleanup!!!
     return port
+
+def create_shared_JSON(current_port, flowsheet_name):
+    '''
+    Description:
+        This function is used to create a ENV_JSON file:
+        This file contain shared data between JS and Python code:
+        Port number, etc.
+
+    check shared_variable.json exists or not
+    1. if not exists, create one and write the port number
+    2. if does exist, update the port number
+    '''
+    if not os.path.exists('shared_variable.json'):
+        with open('shared_variable.json', 'w') as f:
+            json.dump({"port" : current_port, "flowsheet_name": flowsheet_name}, f)
+    else:
+        with open('shared_variable.json', 'r') as f:
+            data = json.load(f)
+            data["port"] = current_port
+            data["flowsheet_name"] = flowsheet_name
+        with open('shared_variable.json', 'w') as f:
+            json.dump(data, f)
+    
