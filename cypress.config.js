@@ -1,9 +1,16 @@
-const { defineConfig } = require("cypress");
+const fs = require('fs-extra')
+const path = require('path')
 
-module.exports = defineConfig({
+//read port and flowsheet name from shared_variable.json
+const sharedVariables = JSON.parse(
+  fs.readFileSync(
+    path.join(__dirname, "/shared_variable.json")
+  )
+);
+
+module.exports = {
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
-  },
-});
+    baseUrl:`https://localhost:${sharedVariables.port}/app?id=${sharedVariables.flowsheet_name}`,
+    video : false
+  }
+}
