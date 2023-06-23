@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/CopyDemon/idaes-ui/issues"
   },
-  "homepage": "https://github.com/CopyDemon/idaes-ui#readme"
+  "homepage": "https://github.com/CopyDemon/idaes-ui#readme",
+  "devDependencies": {
+    "cypress": "^12.15.0"
+  }
 }
