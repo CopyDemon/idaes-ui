@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const fs = require('fs')
 const path = require('path')
 
 //read port and flowsheet name from shared_variable.json
@@ -9,8 +9,12 @@ const sharedVariables = JSON.parse(
 );
 
 module.exports = {
+  logging:{
+    level: 'verbose'
+  },
+  screenshots: true,
+  video : false,
   e2e: {
     baseUrl: sharedVariables.url,
-    video : false
-  }
+  }  
 }
