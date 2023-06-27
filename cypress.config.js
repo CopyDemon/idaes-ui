@@ -10,7 +10,7 @@ const sharedVariables = JSON.parse(
 
 module.exports = {
   e2e: {
-    baseUrl:`https://localhost:${sharedVariables.port}/app?id=${sharedVariables.flowsheet_name}`,
+    baseUrl: sharedVariables.url,
     video : false
   }
 }
