@@ -437,14 +437,16 @@ def create_shared_JSON(current_port, flowsheet_name):
     1. if not exists, create one and write the port number
     2. if does exist, update the port number
     '''
+    localhost_url = 'http://localhost:' + str(current_port) + '/app?id=' + str(flowsheet_name)
+    
     if not os.path.exists('shared_variable.json'):
         with open('shared_variable.json', 'w') as f:
-            json.dump({"port" : current_port, "flowsheet_name": flowsheet_name}, f)
+            json.dump({"url" : localhost_url}, f)
     else:
         with open('shared_variable.json', 'r') as f:
             data = json.load(f)
-            data["port"] = current_port
-            data["flowsheet_name"] = flowsheet_name
+            data["url"] = localhost_url
         with open('shared_variable.json', 'w') as f:
             json.dump(data, f)
     
+
