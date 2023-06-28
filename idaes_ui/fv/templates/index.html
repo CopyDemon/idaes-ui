@@ -16,17 +16,23 @@
 </head>
 
 <body>
-  <div id="app">
-    <div class="idaes-page">
-      <div id="idaes-header">
-        <div class="idaes-titlebar">
-          <div id="idaes_logo"><img src="https://idaes.org/wp-content/uploads/sites/10/2020/02/idaes-logo-300x138.png"
-          alt="IDAES logo"/></div>
-          <div id="idaes-fs-name" data-flowsheet-id="{flowsheet_id}">{flowsheet_id}</div>
-          <div id="idaes-titlebar-right"></div>
-        </div>
+  <main id="app">
+      <!-- header -->
+      <header id="idaes-header">
+        <!-- logo bar -->
+        <section class="idaes-titlebar">
+          <!-- logo -->
+          <figure id="idaes_logo">
+            <img src="https://idaes.org/wp-content/uploads/sites/10/2020/02/idaes-logo-300x138.png" alt="IDAES logo"/>
+          </figure>
+          <!-- flowsheet name -->
+          <h1 id="idaes-fs-name" data-flowsheet-id="{flowsheet_id}">
+            {flowsheet_id}
+          </h1>
+        </section>
         <hr>
-        <!-- Navbar for the page -->
+
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-whole-page" aria-controls="navbar-whole-page" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -89,11 +95,11 @@
             </ul>
           </div>
         </nav> 
-      </div>
+      </header>
 
-      <div class="idaes-toolbar-shadow" data-original-top="60px" style="top: 60px !important;"></div>
+      <!-- <div class="idaes-toolbar-shadow" data-original-top="60px" style="top: 60px !important;"></div> -->
 
-      <div id="idaes-page-contents">
+      <section id="idaes-page-contents">
         <div id="idaes-canvas" class="idaes-container">
           <!-- Toolbar for the flowsheet -->
           <div class="d-flex flex-row" id="idaes-toolbar-flowsheet">
@@ -141,6 +147,7 @@
             </div>
           </div>
         </div>
+        
         <div id="stream-table" class="idaes-container">
           <div id="existing-variable-types" class="streamtable-vartype-panel"></div>
           <!-- Navbar for stream table -->
@@ -162,11 +169,10 @@
             <div id="stream-table-data"  style="height: 800px;width:100%;" class="ag-theme-alpine"></div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
   <!-- end idaes-content -->
 
-  </div>
+  </main>
 
   <!-- Rappid/JointJS dependencies: -->
   <script src="/lib/jquery/jquery.js" type="text/javascript"></script>
