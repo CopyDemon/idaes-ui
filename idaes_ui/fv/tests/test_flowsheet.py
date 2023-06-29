@@ -299,13 +299,12 @@ def test_flowsheet_serializer_demo(demo_flowsheet, demo_flowsheet_json):
     _canonicalize(test_dict)
     _canonicalize(stored_dict)
 
-    logging.info("############# Test dict ################")
-    logging.info(json.dumps(test_dict, sort_keys=True))
-    logging.info("####################################")
-    logging.info(json.dumps(stored_dict, sort_keys=True))
-    logging.info("############# Sort_dict ################")
-    assert True
-    # assert json.dumps(test_dict, sort_keys=True) == json.dumps(stored_dict, sort_keys=True)
+    # logging.info("############# Test dict ################")
+    # logging.info(json.dumps(test_dict, sort_keys=True))
+    # logging.info("####################################")
+    # logging.info(json.dumps(stored_dict, sort_keys=True))
+    # logging.info("############# Sort_dict ################")
+    assert json.dumps(test_dict, sort_keys=True) == json.dumps(stored_dict, sort_keys=True)
 
 
 @pytest.mark.skipif(not helmholtz_available(), reason="General Helmholtz not available")
