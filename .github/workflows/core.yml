@@ -79,7 +79,7 @@ jobs:
         run: pytest -m "not integration"
 
 
-    run: pytest -v -s -m "not integration"
+run: pytest -v -s -m "not integration"
         
   cypress:
     name: cypress (py${{ matrix.python-version }}/${{ matrix.os }})
