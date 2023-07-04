@@ -23,21 +23,10 @@ describe('loads the app UI correctly', () => {
   it('loads stream table', () => {
     cy.get('#stream-table').should('exist');
   })
+
+  //loading fake test check if test working
+  it('loads stream table', () => {
+    cy.get('#unexist-id').should('exist');
+  })
 })
-
-
-
-
-
-// describe(`header component spec`, () => {
-//     // it(`should have logo`, () =>{
-//     //   cy.visit(Cypress.config('baseUrl'));
-//     //   cy.get(`#idaes-logo`).should('have.attr', 'src', 'assets/idaes-logo.png');
-//     // })
-
-//     it(`should have correct flowsheet name`, () => {
-//       cy.visit(Cypress.config('baseUrl'));
-//       cy.get(`#idaes-fs-name`).should('have.text', 'sample_visualization');
-//     })
-// });
 
