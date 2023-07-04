@@ -113,7 +113,8 @@ jobs:
       #cypress starts here
       - name: Install node packages
         run: npm install
-      - name: Start UI & echo "UI Server started"
+      - name: Start UI
+        run: npm run ui & echo "UI Server started"
       - name: Extract server port
         run: npm run ui & echo "UI Server started"
       - name: Extract server port
@@ -121,7 +122,9 @@ jobs:
           echo "Reading port from shared_variable.json"
           echo "URL=$(node -pe \"require('./shared_variable.json').url\")" >> $GITHUB_ENV
       - name: Cypress run
-        wait-on: ${{ env.URL }}
-        wait-on-timeout: 20
-        command: npm run test
-        browser: chrome
+        uses: cypress-io/github-action@v5
+        with:
+          wait-on: ${{ env.URL }}
+          wait-on-timeout: 20
+          command: npm run test
+          browser: chrome
