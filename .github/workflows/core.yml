@@ -74,12 +74,12 @@ jobs:
         with:
           install-target: -r requirements-dev.txt
 
-  # pytest:
-  #   name: pytest (py${{ matrix.python-version }}/${{ matrix.os }})
-  #   needs: setup
-  #   steps:
-  #     - name: pytest
-  #     - run: pytest -v -s -m "not integration"
+  pytest:
+    name: pytest #(py${{ matrix.python-version }}/${{ matrix.os }})
+    needs: setup
+    steps:
+      - name: pytest
+      - run: pytest -v -s -m "not integration"
 
   # cypress: 
   #   name: cypress test (py${{ matrix.python-version }}/${{ matrix.os }})
