@@ -25,8 +25,8 @@ describe('loads the app UI correctly', () => {
   })
 
   //loading fake test check if test working
-  it('loads stream table', () => {
-    cy.get('#unexist-id').should('exist');
-  })
+  // it('loads stream table', () => {
+  //   cy.get('#unexist-id').should('exist');
+  // })
 })
 
