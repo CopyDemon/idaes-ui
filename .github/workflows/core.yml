@@ -98,22 +98,22 @@ jobs:
             runner-image: ubuntu-20.04
           - os: win64
             runner-image: windows-2022
-      steps:
-        #python starts here
-        - uses: actions/checkout@v3
-        - name: Set up Conda environment
-          uses: conda-incubator/setup-miniconda@v2.2.0
-          with:
-            activate-environment: ${{ env.IDAES_CONDA_ENV_NAME_DEV }}
-            python-version: ${{ matrix.python-version }}
-        - name: Install the code
-          uses: ./.github/actions/install
-          with:
-            install-target: -r requirements-dev.txt
-        #cypress starts here
-        - name: Install node packages
-          run: npm install
-        - name: Start UI
-          run: npm run ui
-        - name: Start cypress testing
-          run: npm run test
+    steps:
+      #python starts here
+      - uses: actions/checkout@v3
+      - name: Set up Conda environment
+        uses: conda-incubator/setup-miniconda@v2.2.0
+        with:
+          activate-environment: ${{ env.IDAES_CONDA_ENV_NAME_DEV }}
+          python-version: ${{ matrix.python-version }}
+      - name: Install the code
+        uses: ./.github/actions/install
+        with:
+          install-target: -r requirements-dev.txt
+      #cypress starts here
+      - name: Install node packages
+        run: npm install
+      - name: Start UI
+        run: npm run ui
+      - name: Start cypress testing
+        run: npm run test
