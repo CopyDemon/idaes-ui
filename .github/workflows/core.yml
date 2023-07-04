@@ -82,22 +82,22 @@ jobs:
     name: cypress (py${{ matrix.python-version }}/${{ matrix.os }})
     #setup python environment for python server, install UI
     runs-on: ${{ matrix.runner-image }}
-      strategy:
-        fail-fast: false
-        matrix:
-          python-version:
-            - '3.8'
-            - '3.9'
-            - '3.10'
-            - '3.11'
-          os:
-            - linux
-            - win64
-          include:
-            - os: linux
-              runner-image: ubuntu-20.04
-            - os: win64
-              runner-image: windows-2022
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+          - '3.11'
+        os:
+          - linux
+          - win64
+        include:
+          - os: linux
+            runner-image: ubuntu-20.04
+          - os: win64
+            runner-image: windows-2022
       steps:
         #python starts here
         - uses: actions/checkout@v3
