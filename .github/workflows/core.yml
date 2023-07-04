@@ -45,34 +45,34 @@ defaults:
 
 jobs:
   setup:
-    runs-on: ${{ matrix.runner-image }}
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version:
-          - '3.8'
-          - '3.9'
-          - '3.10'
-          - '3.11'
-        os:
-          - linux
-          - win64
-        include:
-          - os: linux
-            runner-image: ubuntu-20.04
-          - os: win64
-            runner-image: windows-2022
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Conda environment
-        uses: conda-incubator/setup-miniconda@v2.2.0
-        with:
-          activate-environment: ${{ env.IDAES_CONDA_ENV_NAME_DEV }}
-          python-version: ${{ matrix.python-version }}
-      - name: Install the code
-        uses: ./.github/actions/install
-        with:
-          install-target: -r requirements-dev.txt
+    # runs-on: ${{ matrix.runner-image }}
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     python-version:
+    #       - '3.8'
+    #       - '3.9'
+    #       - '3.10'
+    #       - '3.11'
+    #     os:
+    #       - linux
+    #       - win64
+    #     include:
+    #       - os: linux
+    #         runner-image: ubuntu-20.04
+    #       - os: win64
+    #         runner-image: windows-2022
+    # steps:
+    #   - uses: actions/checkout@v3
+    #   - name: Set up Conda environment
+    #     uses: conda-incubator/setup-miniconda@v2.2.0
+    #     with:
+    #       activate-environment: ${{ env.IDAES_CONDA_ENV_NAME_DEV }}
+    #       python-version: ${{ matrix.python-version }}
+    #   - name: Install the code
+    #     uses: ./.github/actions/install
+    #     with:
+    #       install-target: -r requirements-dev.txt
 
   # pytest:
   #   name: pytest (py${{ matrix.python-version }}/${{ matrix.os }})
