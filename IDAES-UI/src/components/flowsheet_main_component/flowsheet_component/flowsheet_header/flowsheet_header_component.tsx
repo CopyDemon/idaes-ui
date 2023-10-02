@@ -29,7 +29,7 @@ export default function FlowsheetHeader(){
   }
 
   return(
-    <div className={`pd-md ${css.flowsheetHeader_main_container}`}>
+    <div className={`pd-md ${css.flowsheetHeader_main_container}`} id="flowsheetHeader">
       <p className={css.flowsheetHeader_title}>FLOWSHEET</p>
       <div className={css.flowsheetHeader_icon_container}>
         <span id="stream-names-toggle"
