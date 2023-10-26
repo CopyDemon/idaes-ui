@@ -107,7 +107,7 @@ export class Diagnostic_main{
                         <p class="diagnostics-section_title">
                             ${this.diagnosticsDOMSections[i]}
                         </p>
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-section_title_expand_icon diagnostics-section_title_expand_icon_open">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-section_title_expand_icon diagnostics-section_title_expand_icon_open">
                     </div>
                 </div>
             `
@@ -333,7 +333,7 @@ export class Diagnostic_main{
             diagnosticIssuesContentContainer.innerHTML += `
                 <div id="diagnostics-issue_${el}" class="diagnostics-issue_category_container">
                     <div class="diagnostics-severity_title_container">
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon diagnostics-issue_expand_icon_open">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon diagnostics-issue_expand_icon_open">
                         <p class="issue_serverity_${el}">${severity[el]} <span class="diagnostics-issue_severity_title_severity">${el}</span></p>
                     </div>
                     <div id="diagnostics-${el}_content_container" class="diagnostics_issue_detail_content_container"></div>
@@ -356,15 +356,15 @@ export class Diagnostic_main{
             const dom = `
                 <div class="diagnostics_issue_each_detail">
                     <div class="diagnostics_issue_each_detail_title_container">
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${issueDataIndex < 2 ? "diagnostics-issue_expand_icon_open" : "diagnostics-issue_expand_icon_open"}">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${issueDataIndex < 2 ? "diagnostics-issue_expand_icon_open" : "diagnostics-issue_expand_icon_open"}">
                         <span class="diagnostics_issue_each_detail_severity">${eachIssue["severity"]}</span> ${issueDataIndex+1}:  ${eachIssue["description"]}
                     </div>
                     <div class="diagnostics_issue_each_detail_content_container flex-row">
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${issueDataIndex < 1 ? "diagnostics-issue_expand_icon_open" : "diagnostics-issue_expand_icon_close"}">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${issueDataIndex < 1 ? "diagnostics-issue_expand_icon_open" : "diagnostics-issue_expand_icon_close"}">
                         <p>${eachIssue['name']} :  ${issueDataIndex < 100 ? eachIssue['objects'].length : ""}</p>
                     </div>
                     <div class="diagnostics-issue_search_bar_container flex-row" style="display : ${issueDataIndex < 2 ? "flex" : "none"}">
-                        <img src="/public/assets/image/normal_icon/filter.png" class="diagnostics-issue_search_bar_icon" alt="search bar icon">
+                        <img src="/assets/image/normal_icon/filter.png" class="diagnostics-issue_search_bar_icon" alt="search bar icon">
                         <input type="text" placeholder="Search" class="diagnostics-issue_search_bar">
                     </div>
                     <div id="diagnostics_issue_each_detail_content_container_${issueDataIndex}">
