@@ -15,6 +15,7 @@ import uvicorn
 from idaes_ui.fv.models import DiagnosticsData, DiagnosticsException, DiagnosticsError
 from idaes_ui.fv.models.settings import AppSettings
 from idaes_ui.fv.models.flowsheet import Flowsheet, merge_flowsheets
+from starlette.middleware.cors import CORSMiddleware
 
 
 class FlowsheetApp:
@@ -23,6 +24,13 @@ class FlowsheetApp:
 
     def __init__(self, flowsheet, name="my flowsheet"):
         self.app = FastAPI()
+        self.app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],  # allow all source
+            allow_credentials=True,
+            allow_methods=["*"],  # allow all methods
+            allow_headers=["*"],  # allow all header
+        )
         self.app.mount(
             "/static", StaticFiles(directory=self._static_dir), name="static"
         )
