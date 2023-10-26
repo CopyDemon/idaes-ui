@@ -46,8 +46,8 @@ _this_dir = Path(__file__).parent.absolute()
 # _template_dir = _this_dir / "templates"
 
 # react app dir
-_static_dir = _this_dir / "../../IDAES-UI/dist/"
-_template_dir = _this_dir / "../../IDAES-UI/dist/"
+_static_dir = _this_dir / "./reactBuild/"
+_template_dir = _this_dir / "./reactBuild/"
 
 # Dev switch between old site and new site
 enableOldSite = False
