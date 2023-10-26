@@ -26,6 +26,7 @@ from idaes import logger
 from .model_server import FlowsheetServer
 from . import persist, errors
 
+from .app import FlowsheetApp
 # Logging
 _log = logger.getLogger(__name__)
 
@@ -111,6 +112,11 @@ def visualize(
         web_server = FlowsheetServer(port=port)
         web_server.add_setting("save_time_interval", save_time_interval)
         web_server.start()
+
+        # #start fastapi server use diagnostics
+        app = FlowsheetApp(flowsheet)
+        # app.run(port=6600)
+
         if not quiet:
             _log.info("Started visualization server")
     else:
@@ -193,6 +199,9 @@ def visualize(
     if loop_forever:
         _loop_forever(quiet)
 
+    # this is run fast api then can use localhost:port/diagnostics to get diagnostics data
+    # todo this part will fix when move this backend all to fast api    
+    app.run(port=6600)
     return VisualizeResult(store=datastore, port=web_server.port, server=web_server)
 
 
