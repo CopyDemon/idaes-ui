@@ -88,8 +88,7 @@ idaes_ui = [
     "*.dat",
     "*.yml",
     "*.yaml",
-    "fv/static/lib/**/*",
-    "IDAES-UI/*"
+    "fv/static/lib/**/*"
 ]
 
 [tool.pytest.ini_options]
