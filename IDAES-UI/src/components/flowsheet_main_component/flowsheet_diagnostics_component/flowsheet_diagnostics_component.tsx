@@ -8,7 +8,7 @@ import "./flowsheet_diagnostics.css";
 export default function FlowsheetDiagnostics(){
     useEffect(()=>{
         // let diagnosticDataURL = "/public/data/diagnostic_example.json";
-        let diagnosticDataURL = "/public/data/diagnostic_andrew.json";
+        let diagnosticDataURL = "localhost:6600/diagnostics";
         let diagnosticMain = new Diagnostic_main(diagnosticDataURL);
     },[])
     return (
