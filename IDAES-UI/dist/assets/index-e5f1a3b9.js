@@ -809,7 +809,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                         <p class="diagnostics-section_title">
                             ${this.diagnosticsDOMSections[a]}
                         </p>
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-section_title_expand_icon diagnostics-section_title_expand_icon_open">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-section_title_expand_icon diagnostics-section_title_expand_icon_open">
                     </div>
                 </div>
             `}generateEachCategoryForDOM(t,n){const r=["config","statistics","issues"];t=t.sort((i,a)=>i-a),t.forEach(i=>{r.includes(i)||(console.log("Warrning:"),console.log(`The diagnostics section ${i} is now a known section, please check diagnostics_main.tsx generateEachCategoryForDOM()`)),i==="config"&&this.generateDOMForConfig(n),i==="statistics"&&this.generateDOMForStatistics(n),i==="issues"&&this.generateDOMForIssues(n)})}generateDOMForConfig(t){const n=document.getElementById("diagnostics-config");if(!n){console.log("diagnostics config section not found");return}const r=document.createElement("div");r.classList.add("diagnostics-section_content_container"),n.appendChild(r),r.innerHTML+=`
@@ -838,7 +838,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                     `,o.append(u)}),r.appendChild(o)})}generateDOMForIssues(t){const n=document.getElementById("diagnostics-issues");if(!n){console.log("diagnostics config section not found");return}const r=document.createElement("div");r.classList.add("diagnostics-section_content_container"),r.classList.add("diagnostics-issues_sections"),n.appendChild(r);const i={warning:1,caution:2,next:3},a=t.issues.issues.sort((s,l)=>i[s.severity]-i[l.severity]),o={};a.forEach(s=>{o[s.severity]?o[s.severity]=o[s.severity]+1:o[s.severity]=1}),Object.keys(o).forEach((s,l)=>{r.innerHTML+=`
                 <div id="diagnostics-issue_${s}" class="diagnostics-issue_category_container">
                     <div class="diagnostics-severity_title_container">
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon diagnostics-issue_expand_icon_open">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon diagnostics-issue_expand_icon_open">
                         <p class="issue_serverity_${s}">${o[s]} <span class="diagnostics-issue_severity_title_severity">${s}</span></p>
                     </div>
                     <div id="diagnostics-${s}_content_container" class="diagnostics_issue_detail_content_container"></div>
@@ -846,15 +846,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             `}),a.forEach((s,l)=>{document.getElementById(`diagnostics-${s.severity}_content_container`)}),a.forEach((s,l)=>{const u=document.getElementById(`diagnostics-${s.severity}_content_container`),c=`
                 <div class="diagnostics_issue_each_detail">
                     <div class="diagnostics_issue_each_detail_title_container">
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${l<2,"diagnostics-issue_expand_icon_open"}">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${l<2,"diagnostics-issue_expand_icon_open"}">
                         <span class="diagnostics_issue_each_detail_severity">${s.severity}</span> ${l+1}:  ${s.description}
                     </div>
                     <div class="diagnostics_issue_each_detail_content_container flex-row">
-                        <img src="/public/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${l<1?"diagnostics-issue_expand_icon_open":"diagnostics-issue_expand_icon_close"}">
+                        <img src="/assets/image/normal_icon/triangle.png" class="diagnostics-issue_expand_icon ${l<1?"diagnostics-issue_expand_icon_open":"diagnostics-issue_expand_icon_close"}">
                         <p>${s.name} :  ${l<100?s.objects.length:""}</p>
                     </div>
                     <div class="diagnostics-issue_search_bar_container flex-row" style="display : ${l<2?"flex":"none"}">
-                        <img src="/public/assets/image/normal_icon/filter.png" class="diagnostics-issue_search_bar_icon" alt="search bar icon">
+                        <img src="/assets/image/normal_icon/filter.png" class="diagnostics-issue_search_bar_icon" alt="search bar icon">
                         <input type="text" placeholder="Search" class="diagnostics-issue_search_bar">
                     </div>
                     <div id="diagnostics_issue_each_detail_content_container_${l}">
