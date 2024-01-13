@@ -24,19 +24,21 @@ _log.setLevel(logging.INFO)
 
 def fv_example():
     m = build_flowsheet()
-    visualize(m.fs, "sample_visualization", port=49999)
+    visualize(m.fs, "sample_visualization", port=49999, clean_up=True)
     _log.info("Starting Flowsheet Visualizer")
     _log.info("Press Control-C to stop")
-    try:
-        while 1:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        _log.info("Flowsheet Visualizer stopped")
-    return 0
+    # try:
+    #     while 1:
+    #         time.sleep(1)
+    # except KeyboardInterrupt:
+    #     _log.info("Flowsheet Visualizer stopped")
+    # return 0
 
 
-level_map = {logging.getLevelName(n): n for n in (logging.DEBUG, logging.INFO,
-                                                  logging.WARN, logging.ERROR)}
+level_map = {
+    logging.getLevelName(n): n
+    for n in (logging.DEBUG, logging.INFO, logging.WARN, logging.ERROR)
+}
 
 
 def parse_logging_level(s: str, level: int) -> int:
