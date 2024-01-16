@@ -23,5 +23,8 @@
   "homepage": "https://github.com/IDAES/idaes-ui#readme",
   "devDependencies": {
     "cypress": "^12.15.0"
+  },
+  "dependencies": {
+    "flexlayout-react": "^0.7.15"
   }
 }
