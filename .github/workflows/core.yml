@@ -50,10 +50,14 @@ jobs:
       fail-fast: false
       matrix:
         install-variant:
+<<<<<<< HEAD
           ####
           # TODO: this comment out standard is only a temp work over for install when variant is standrd fix this later
           ####
           # - standard
+=======
+          - standard
+>>>>>>> move_server_to_fastapi
           - dev
         python-version:
           - '3.8'
@@ -74,7 +78,11 @@ jobs:
           variant: ${{ matrix.install-variant }}
           python-version: ${{ matrix.python-version }}
       - name: Run pytest
+<<<<<<< HEAD
         run: pytest -v --pyargs
+=======
+        run: pytest -v --pyargs idaes_ui.fv
+>>>>>>> move_server_to_fastapi
 
   cypress:
     name: cypress (${{ matrix.install-variant }}/py${{ matrix.python-version }}/${{ matrix.os }})
@@ -84,7 +92,11 @@ jobs:
       fail-fast: false
       matrix:
         install-variant:
+<<<<<<< HEAD
           # - standard
+=======
+          - standard
+>>>>>>> move_server_to_fastapi
           - dev
         python-version:
           - '3.8'
@@ -108,7 +120,11 @@ jobs:
           python-version: ${{ matrix.python-version }}
       #cypress starts here
       - name: Check out files needed to run cypress tests
+<<<<<<< HEAD
         if: matrix.install-variant == 'dev'
+=======
+        if: matrix.install-variant != 'dev'
+>>>>>>> move_server_to_fastapi
         uses: actions/checkout@v4
         with:
           sparse-checkout-cone-mode: false
@@ -117,13 +133,29 @@ jobs:
             package.json
             package-lock.json
             cypress.config.js
+<<<<<<< HEAD
+=======
+            
+>>>>>>> move_server_to_fastapi
       - name: Install node packages
         run: npm install
+
       - name: Start UI
+<<<<<<< HEAD
         run: npm run ui & echo "UI Server started"
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           wait-on-timeout: 20
+=======
+        run: |
+          python -m idaes_ui.fv.example & 
+          sleep 30
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          wait-on-timeout: 50
+>>>>>>> move_server_to_fastapi
           command: npm run test
           browser: chrome
