@@ -45,14 +45,10 @@ build-backend = "setuptools.build_meta"
         "httpx",
         # dependency 'requests' module for standalone idaes-ui package
         "requests",
-<<<<<<< HEAD
-        "pydantic",  # idaes_ui.fv.models
-=======
         "nest_asyncio", # support notebook and uvicorn can run asynchronically
         "pydantic",     # idaes_ui.fv.models
         "fastapi",      # web app banckend server
         "uvicorn",      # web app backend server runner
->>>>>>> move_server_to_fastapi
     ]
     keywords = ["IDAES", "energy systems", "chemical engineering", "process modeling"]
 
@@ -102,8 +98,4 @@ idaes_ui = [
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-<<<<<<< HEAD
-addopts = "-ra --pyargs"
-=======
 addopts = "-ra --pyargs idaes_ui.fv"
->>>>>>> move_server_to_fastapi
