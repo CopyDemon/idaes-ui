@@ -10,8 +10,7 @@ export default function StreamTableHeader(){
 
   return (
     <div className={`${css.stream_table_header_main_container}`}>
-      <div className={`mb-md pd-md ${css.stream_table_header_fn_row}`}>
-        <p className={css.stream_table_title}>STREAM TABLE</p>
+      <div className={`${css.stream_table_header_fn_row}`}>
         <div  id="hide-fields-dropdown" 
               className={`nav-link dropdown-toggle idaes-nav-button ${css.hideFieldBtn}`} 
               data-toggle="dropdown" 
@@ -30,7 +29,7 @@ export default function StreamTableHeader(){
       </div>
       
       {/* table cell is generate base on model */}
-      <div id="existing-variable-types" className="pd-md streamtable-vartype-panel"></div>
+      <div id="existing-variable-types" className={`streamtable-vartype-panel ${css.streamtable_vartype_panel}`}></div>
     </div>
   )
 }
