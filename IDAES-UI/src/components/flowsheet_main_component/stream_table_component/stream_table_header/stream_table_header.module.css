@@ -9,7 +9,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
 }
 
 .stream_table_title{
@@ -92,4 +91,8 @@
   width: 0;
   height: 0;
   display: none;
+}
+
+.streamtable_vartype_panel{
+  display: none !important;
 }
