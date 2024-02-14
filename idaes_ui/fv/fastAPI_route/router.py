@@ -7,6 +7,7 @@ from idaes_ui.fv.fastAPI_functions.flowsheet_manager import FlowsheetManager
 from .api_get_flowsheet_route import GetFlowsheetRoute
 from .api_put_flowsheet_route import PutFlowsheetRoute
 from .api_get_diagnostics_route import GetDiagnosticsRoute
+from .api_post_diagnostics_runner import PostDiagnosticsRunnerRoute
 from .api_get_app_setting_route import GetAppSettingRoute
 from .api_put_app_setting_route import PutAppSettingRoute
 from .api_get_react_app_route import GetReactAppRoute
@@ -52,6 +53,9 @@ class Router:
 
         # api end point get diagnostics
         GetDiagnosticsRoute(fastAPIApp, flowsheet_manager)
+
+        # api end point post diagnostics runner
+        PostDiagnosticsRunnerRoute(fastAPIApp, flowsheet_manager)
 
         # api end point get app setting
         GetAppSettingRoute(fastAPIApp, flowsheet_manager)
