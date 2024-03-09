@@ -12,6 +12,7 @@ class GetDiagnosticsRoute:
                 # read current flowsheet from flowsheet manager
                 original_flowsheet = flowsheet_manager.get_original_flowsheet()
                 diag_data = DiagnosticsData(original_flowsheet)
+                print(diag_data)
                 return diag_data
             except DiagnosticsException as exc:
                 error_json = DiagnosticsError.from_exception(exc).model_dump_json()
