@@ -41,7 +41,7 @@ export default function MinimizedBar(){
 
 		return tags;
 	}
-
+	
 	/**
 	 * This is a event handle function when minized panel tag clicked the panel with that panel name should be bring back on window
 	 * @param panelName String, the panel name to identify which panel should bring back
