@@ -102,7 +102,7 @@ export class MainFV {
         if(isFvShow) this.renderModel(this.model); //this only run when fv is show
         //render stream table
         //if statment control when stream table not show the stream table should not render
-        if(isStreamTableShow) this.stream_table = new StreamTable(this, this.model, this.viewInLogPanel);
+        if(isStreamTableShow && viewInLogPanel.streamTable) this.stream_table = new StreamTable(this, this.model, this.viewInLogPanel);
         // new this.toolbar
         this.toolbar = new Toolbar(this, this.paper, this.stream_table, this.flowsheetId, this.getFSUrl,this.putFSUrl, this.isFvShow);
         // get toolbar event cleanup function
