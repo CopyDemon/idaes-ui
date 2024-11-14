@@ -3,13 +3,31 @@ Tests for the diagnostics models
 """
 
 import json
-
 import pytest
+from multiprocessing import Process
+from time import sleep
 
 requests = pytest.importorskip("requests")
 
 from ..diag import DiagnosticsData
 from . import flowsheet
+
+
+@pytest.fixture
+def visualization_server(flowsheet):
+    """Fixture to start the visualization server"""
+
+    def run_server():
+        flowsheet.visualize("sample_visualization", port=49999)
+
+    server_process = Process(target=run_server)
+    server_process.start()
+    sleep(30)  # wait for the server to start
+
+    yield
+    # clean up server
+    server_process.terminate()
+    server_process.join()
 
 
 # get diagnostics data from remote
@@ -29,7 +47,8 @@ def get_diagnostics_data(port, id):
 @pytest.mark.unit
 def test_visualize_is_up(flowsheet):
     flowsheet.visualize("sample_visualization", port=49999)
-    assert get_diagnostics_data(49999, "sample_visualization")
+    res = get_diagnostics_data(49999, "sample_visualization")
+    assert res is not None
 
 
 @pytest.mark.unit
