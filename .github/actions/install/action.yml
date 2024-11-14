@@ -36,11 +36,18 @@ runs:
     - name: Check out repository
       if: inputs.variant == 'dev'
       uses: actions/checkout@v4
+      
+    # dev installation
     - name: Install using pip (requirements-dev.txt)
       if: inputs.variant == 'dev'
       shell: bash -l {0}
-      run: pip install --progress-bar off -r requirements-dev.txt
+      run: |
+        pip install -e .
+        pip install --progress-bar off -r requirements-dev.txt
+        echo "verify idaes ui installed"
+        pip list | grep idaes-ui
 
+    # standard installation 
     - name: Install using pip (git+... URL)
       if: inputs.variant == 'standard'
       shell: bash -l {0}
