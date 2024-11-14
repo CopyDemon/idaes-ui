@@ -5,6 +5,7 @@ Tests for the diagnostics models
 import json
 
 import pytest
+
 requests = pytest.importorskip("requests")
 
 from ..diag import DiagnosticsData
@@ -26,7 +27,16 @@ def get_diagnostics_data(port, id):
 
 
 @pytest.mark.unit
+def test_visualize_is_up(flowsheet):
+    flowsheet.visualize("sample_visualization", port=49999)
+    assert get_diagnostics_data(49999, "sample_visualization")
+
+
+@pytest.mark.unit
 def test_data(flowsheet):
+    # start UI server
+    flowsheet.visualize("sample_visualization", port=49999)
+
     # directly get diagnostics data
     diag_data = DiagnosticsData(flowsheet)
 
@@ -43,8 +53,9 @@ def test_data(flowsheet):
             "next_steps": diagnostics_toolbox_report.next_steps,
         },
     }
-    flowsheet.visualize("sample_visualization", port=49999)
+    # get diagnostics data from backend server
     remote_data = json.dumps(get_diagnostics_data(49999, "sample_visualization"))
+    # compare the diagnostics data
     build_diagnostics_report = json.dumps(build_diagnostics_report)
     assert build_diagnostics_report == remote_data
 
