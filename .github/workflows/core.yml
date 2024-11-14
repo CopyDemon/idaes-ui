@@ -50,7 +50,7 @@ jobs:
       fail-fast: false
       matrix:
         install-variant:
-          # - standard
+          - standard
           - dev
         python-version:
           - '3.9'
@@ -72,3 +72,66 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Run pytest
         run: pytest -v --pyargs idaes_ui.fv
+
+  cypress:
+    name: cypress (${{ matrix.install-variant }}/py${{ matrix.python-version }}/${{ matrix.os }})
+    #setup python environment for python server, install UI
+    runs-on: ${{ matrix.runner-image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        install-variant:
+          - standard
+          - dev
+        python-version:
+          - '3.9'
+        #   - '3.10'
+        #   - '3.11'
+          - '3.12'
+        os:
+          - linux
+          - win64
+        include:
+          - os: linux
+            runner-image: ubuntu-20.04
+          - os: win64
+            runner-image: windows-2022
+    steps:
+      #python starts here
+      - name: Install python code
+        uses: IDAES/idaes-ui/.github/actions/install@main
+        with:
+          variant: ${{ matrix.install-variant }}
+          python-version: ${{ matrix.python-version }}
+      #cypress starts here
+      - name: Check out files needed to run cypress tests
+        if: matrix.install-variant != 'dev'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            cypress
+            package.json
+            package-lock.json
+            cypress.config.js
+            
+      - name: Install node packages
+        run: npm install
+
+      - name: Start UI
+        run: |
+          python -m idaes_ui.fv.example & 
+          sleep 30
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          wait-on-timeout: 50
+          command: npm run test
+          browser: chrome
+      - name: Upload screenshots
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots-${{ matrix.install-variant }}-py${{ matrix.python-version }}-${{ matrix.os }}
+          path: cypress/screenshots
