@@ -59,12 +59,12 @@ jobs:
           - '3.12'
         os:
           - linux
-          # - win64
+          - win64
         include:
           - os: linux
             runner-image: ubuntu-20.04
-          # - os: win64
-          #   runner-image: windows-2022
+          - os: win64
+            runner-image: windows-2022
     steps:  
       - uses: IDAES/idaes-ui/.github/actions/install@main
         with:
