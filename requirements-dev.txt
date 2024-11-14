@@ -3,5 +3,5 @@
 # For adding copyright headers (see addheader.yml and the readme)
 # pytest
 addheader >= 0.3.0
-idaes-pse >= 2.6.0
+idaes-pse >= 2.5.0
 # idaes-pse @ git+https://github.com/IDAES/idaes-pse@main
